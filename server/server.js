@@ -12,9 +12,9 @@ app.get("/", (request, response) => {
 });
 
 app.get("/tweets", async (request, response) => {
-  const API = `https://api.twitter.com/2/users/by/username/$USERNAME-HAuthorization:Bearer$ACCESS_TOKEN`;
+  const API = `https://api.twitter.com/1.1/statuses/show.json?id=210462857140252672`;
   const res = await axios.get(API);
-  response.json(res);
+  response.status(200).json(res);
 });
 
 // Checking the working port.
