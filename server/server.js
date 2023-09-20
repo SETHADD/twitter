@@ -5,8 +5,9 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8081;
 const app = express();
 app.use(cors());
+const game = require("./game");
 
-// Creating the endpoint.
+// Creating the endpoint for the homepage.
 app.get("/", (request, response) => {
   response.status(200).json("I can be heard loud and clear");
 });
@@ -16,6 +17,9 @@ app.get("/tweets", async (request, response) => {
   const res = await axios.get(API);
   response.status(200).json(res);
 });
+
+//endpoint for the game
+app.get("/game", game);
 
 // Checking the working port.
 app.listen(PORT, () => {
