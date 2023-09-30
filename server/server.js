@@ -12,6 +12,13 @@ app.get("/", (request, response) => {
   response.status(200).json("I can be heard loud and clear");
 });
 
+//creating a middleware of the current time
+app.use((request, response, next) => {
+  console.log(`${new Date()}`);
+  //call the next function to pass on to the next middleware
+  next();
+});
+
 app.get("/tweets", async (request, response) => {
   const API = `https://api.twitter.com/1.1/statuses/show.json?id=210462857140252672`;
   const res = await axios.get(API);
