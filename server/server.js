@@ -25,8 +25,15 @@ app.get("/tweets", async (request, response) => {
   response.status(200).json(res);
 });
 
+// Creating the request parameters for the URL
+app.get("/game/:PlayerId", (request, response) => {
+  const PlayerId = request.params.PlayerId;
+  response.status(200).send(`PlayerId: ${PlayerId}`);
+  console.log(`Params picked up from the URL`);
+});
+
 //endpoint for the game
-app.get("/game", game);
+app.get("/game/:PlayerId", game);
 
 // Checking the working port.
 app.listen(PORT, () => {
