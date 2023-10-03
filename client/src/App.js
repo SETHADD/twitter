@@ -24,7 +24,10 @@ function App() {
   return (
     <div className="App">
       <h1>THIS PAGE HAS A HIDDEN GEM BELOW CLICK ON THE BUTTON</h1>
-      <button onClick={render}>CLICK HERE</button>
+      <form onSubmit={render}>
+        <input></input>
+        <button>CLICK HERE</button>
+      </form>
       <h2>{Data}</h2>
       <h3>Your Lucky Number For Today is {Number}</h3>
     </div>
