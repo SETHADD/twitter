@@ -33,7 +33,7 @@ app.get("/game/:PlayerId", (request, response) => {
 });
 
 //endpoint for the game
-app.get("/game/:PlayerId", game);
+app.get("/game", game);
 
 // Checking the working port.
 app.listen(PORT, () => {

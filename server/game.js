@@ -3,8 +3,9 @@ function game(request, response) {
   let randonNum = arr[Math.floor(Math.random() * arr.length)];
 
   // creating a query ability in my API
-  const search = request.query;
-  if (search === randonNum) {
+  const search = parseInt(request.query.search);
+  console.log(`The searched number is ${search}`);
+  if (search == randonNum) {
     response
       .status(200)
       .json(`WOW! You guessed right the number is ${randonNum}`);
@@ -14,7 +15,13 @@ function game(request, response) {
       .json(`SORRY YOU GUESSED WRONG!! The number is ${randonNum}`);
   }
 
-  // (search===randonNum)?response.status(200).json(`WOW! You guessed right the number is ${randonNum}`):    response.status(200).json(`SORRY YOU GUESSED WRONG!! The number is ${randonNum}`);
+  // search === randonNum
+  //   ? response
+  //       .status(200)
+  //       .json(`WOW! You guessed right the number is ${randonNum}`)
+  //   : response
+  //       .status(200)
+  //       .json(`SORRY YOU GUESSED WRONG!! The number is ${randonNum}`);
 
   console.log(randonNum);
 }

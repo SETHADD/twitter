@@ -5,9 +5,7 @@ import axios from "axios";
 function App() {
   const [Data, setData] = useState("");
   const [Number, setNumber] = useState(0);
-  useEffect(() => {
-    randonNumber();
-  }, [Data]);
+  const [Query, setQuery] = useState("");
 
   async function render() {
     const API = "http://localhost:8080/";
@@ -16,20 +14,32 @@ function App() {
   }
 
   async function randonNumber() {
-    const API1 = "http://localhost:8080/game";
+    const API1 = `http://localhost:8080/game?${Query}`;
     const res1 = await axios.get(API1);
     setNumber(res1.data);
+    console.log("AP1 query");
   }
+
+  const handleInputChange = (event) => {
+    setQuery(event.target.value);
+    console.log("HandleInput query");
+  };
+
+  useEffect(() => {
+    render();
+  });
 
   return (
     <div className="App">
       <h1>THIS PAGE HAS A HIDDEN GEM BELOW CLICK ON THE BUTTON</h1>
-      <form onSubmit={render}>
-        <input></input>
-        <button>CLICK HERE</button>
+      <form>
+        <input onChange={handleInputChange}></input>
+        <button type="button" onClick={randonNumber}>
+          SUBMIT
+        </button>
       </form>
       <h2>{Data}</h2>
-      <h3>Your Lucky Number For Today is {Number}</h3>
+      <h3>{Number}</h3>
     </div>
   );
 }
