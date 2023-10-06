@@ -14,7 +14,7 @@ function App() {
   }
 
   async function randonNumber() {
-    const API1 = `http://localhost:8080/game?${Query}`;
+    const API1 = `http://localhost:8080/game?searched=${Query}`;
     const res1 = await axios.get(API1);
     setNumber(res1.data);
     console.log("AP1 query");
