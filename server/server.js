@@ -13,7 +13,7 @@ app.get("/", (request, response) => {
 });
 
 //creating a middleware of the current time
-app.use((request, response, next) => {
+app.use("/tweets", (request, response, next) => {
   console.log(`${new Date()}`);
   //call the next function to pass on to the next middleware
   next();

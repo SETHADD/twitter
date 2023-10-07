@@ -13,7 +13,7 @@ function App() {
     setData(res.data);
   }
 
-  async function randonNumber() {
+  async function randomNum() {
     const API1 = `http://localhost:8080/game?searched=${Query}`;
     const res1 = await axios.get(API1);
     setNumber(res1.data);
@@ -21,6 +21,7 @@ function App() {
   }
 
   const handleInputChange = (event) => {
+    // event.preventDefault();
     setQuery(event.target.value);
     console.log("HandleInput query");
   };
@@ -34,7 +35,7 @@ function App() {
       <h1>THIS PAGE HAS A HIDDEN GEM BELOW CLICK ON THE BUTTON</h1>
       <form>
         <input onChange={handleInputChange}></input>
-        <button type="button" onClick={randonNumber}>
+        <button type="button" onClick={randomNum}>
           SUBMIT
         </button>
       </form>
