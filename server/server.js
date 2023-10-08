@@ -6,6 +6,8 @@ const PORT = process.env.PORT || 8081;
 const app = express();
 app.use(cors());
 const game = require("./game");
+//Enable the ability to update and post data
+app.use(express.json());
 
 // Creating the endpoint for the homepage.
 app.get("/", (request, response) => {
@@ -34,6 +36,13 @@ app.get("/game/:PlayerId", (request, response) => {
 
 //endpoint for the game
 app.get("/game", game);
+
+// creating the posting endpoint
+app.post("/game", (request, response) => {
+  const ratings = request.body;
+  response.status(200).json({ comment: ratings });
+  console.log("Comment successfully posted");
+});
 
 // Checking the working port.
 app.listen(PORT, () => {
