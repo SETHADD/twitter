@@ -10,9 +10,11 @@ const game = require("./game");
 app.use(express.json());
 
 // create a json file
-const userIds = {[userId1:{"username":"user1"},
- 
-]}
+const userIds = [
+  { username: "user1", trophy: 1 },
+  { username: "user2", trophy: 2 },
+  { username: "user3", trophy: 4 },
+];
 
 // Creating the endpoint for the homepage.
 app.get("/", (request, response) => {
