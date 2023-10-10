@@ -9,6 +9,11 @@ const game = require("./game");
 //Enable the ability to update and post data
 app.use(express.json());
 
+// create a json file
+const userIds = {[userId1:{"username":"user1"},
+ 
+]}
+
 // Creating the endpoint for the homepage.
 app.get("/", (request, response) => {
   response.status(200).json("I can be heard loud and clear");
