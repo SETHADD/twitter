@@ -11,9 +11,9 @@ app.use(express.json());
 
 // create a json file
 const userIds = [
-  { username: "user1", trophy: 1 },
-  { username: "user2", trophy: 2 },
-  { username: "user3", trophy: 4 },
+  { username: "user1", trophy: 1, id: 1 },
+  { username: "user2", trophy: 2, id: 2 },
+  { username: "user3", trophy: 4, id: 3 },
 ];
 
 // Creating the endpoint for the homepage.
@@ -40,7 +40,7 @@ app.get("/game/:PlayerId", (request, response) => {
   // response.status(200).send(`PlayerId: ${PlayerId}`);
   response.status(200).json({
     data: userIds.find((userId) => {
-      return userId.username === PlayerId;
+      userId.id === PlayerId;
     }),
   });
   console.log(`Params picked up from the URL`);
