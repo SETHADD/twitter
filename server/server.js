@@ -37,7 +37,12 @@ app.get("/tweets", async (request, response) => {
 // Creating the request parameters for the URL
 app.get("/game/:PlayerId", (request, response) => {
   const PlayerId = request.params.PlayerId;
-  response.status(200).send(`PlayerId: ${PlayerId}`);
+  // response.status(200).send(`PlayerId: ${PlayerId}`);
+  response.status(200).json({
+    data: userIds.find((userId) => {
+      return userId.username === PlayerId;
+    }),
+  });
   console.log(`Params picked up from the URL`);
 });
 
