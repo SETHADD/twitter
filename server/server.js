@@ -9,12 +9,7 @@ const game = require("./game");
 //Enable the ability to update and post data
 app.use(express.json());
 
-// create a json file
-const userIds = [
-  { username: "user1", trophy: 1, id: 1 },
-  { username: "user2", trophy: 2, id: 2 },
-  { username: "user3", trophy: 4, id: 3 },
-];
+const todo = require("./todo");
 
 // Creating the endpoint for the homepage.
 app.get("/", (request, response) => {
@@ -35,23 +30,7 @@ app.get("/tweets", async (request, response) => {
 });
 
 // Creating the request parameters for the URL
-app.get("/game/:PlayerId", (request, response) => {
-  const PlayerId = request.params.PlayerId;
-  // response.status(200).send(`PlayerId: ${PlayerId}`);
-  // response.status(200).json({
-  //   data: userIds.find((userId) => {
-  //     userId.id === PlayerId;
-  //   }),
-  // });
-  const todo = userIds.find((userId) => {
-    userId.id === parseInt(PlayerId);
-  });
-  console.log(todo);
-  todo
-    ? response.status(200).json({ data: todo })
-    : response.status(400).json({ msg: "todo not found" });
-  console.log(`Params picked up from the URL`);
-});
+app.get("/game/:PlayerId", todo);
 
 //endpoint for the game
 app.get("/game", game);
