@@ -38,11 +38,18 @@ app.get("/tweets", async (request, response) => {
 app.get("/game/:PlayerId", (request, response) => {
   const PlayerId = request.params.PlayerId;
   // response.status(200).send(`PlayerId: ${PlayerId}`);
-  response.status(200).json({
-    data: userIds.find((userId) => {
-      userId.id === PlayerId;
-    }),
+  // response.status(200).json({
+  //   data: userIds.find((userId) => {
+  //     userId.id === PlayerId;
+  //   }),
+  // });
+  const todo = userIds.find((userId) => {
+    userId.id === parseInt(PlayerId);
   });
+  console.log(todo);
+  todo
+    ? response.status(200).json({ data: todo })
+    : response.status(400).json({ msg: "todo not found" });
   console.log(`Params picked up from the URL`);
 });
 
