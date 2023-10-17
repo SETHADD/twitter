@@ -5,10 +5,13 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8081;
 const app = express();
 app.use(cors());
+
+// import the game function
 const game = require("./game");
 //Enable the ability to update and post data
 app.use(express.json());
 
+// import the todo function
 const todo = require("./todo");
 
 // Creating the endpoint for the homepage.
