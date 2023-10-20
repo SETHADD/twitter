@@ -30,6 +30,7 @@ app.get("/tweets", async (request, response) => {
   const API = `https://api.twitter.com/1.1/statuses/show.json?id=210462857140252672`;
   const res = await axios.get(API);
   response.status(200).json(res);
+  console.log("The twitter API is more than ready");
 });
 
 // Creating the request parameters for the URL
