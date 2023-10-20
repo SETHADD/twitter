@@ -6,6 +6,7 @@ function App() {
   const [Data, setData] = useState("");
   const [Number, setNumber] = useState(0);
   const [Query, setQuery] = useState("");
+  const [Forms, setForms] = useState({});
 
   async function render() {
     const API = "http://localhost:8080/";
@@ -24,6 +25,11 @@ function App() {
     // event.preventDefault();
     setQuery(event.target.value);
     console.log("HandleInput query");
+  };
+
+  const handlePost = (event) => {
+    setForms(event.target.value);
+    console.log("Post sent successfuylly");
   };
 
   useEffect(() => {
