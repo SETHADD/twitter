@@ -48,7 +48,7 @@ function App() {
       </form>
       <h2>{Data}</h2>
       <h3>{Number}</h3>
-      <PostForms handlepost={handlePost} forms={Forms} />
+      <PostForms handlePost={handlePost} forms={Forms} />
     </div>
   );
 }
