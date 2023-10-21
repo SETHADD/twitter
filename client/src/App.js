@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import PostForms from "./components/forms";
 
 function App() {
   const [Data, setData] = useState("");
@@ -47,6 +48,7 @@ function App() {
       </form>
       <h2>{Data}</h2>
       <h3>{Number}</h3>
+      <PostForms handlepost={handlePost} forms={Forms} />
     </div>
   );
 }
