@@ -7,7 +7,9 @@ export default function forms({ handlePost, forms }) {
         <input placeholder="Enter your id">ID</input>
         <input placeholder="Enter your username">Username</input>
         <input placeholder="How many trophies?">Trophy</input>
-        <button type="button">submit</button>
+        <button type="button" onClick={handlePost}>
+          submit
+        </button>
       </form>
     </div>
   );

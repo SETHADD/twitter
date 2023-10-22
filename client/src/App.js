@@ -7,7 +7,11 @@ function App() {
   const [Data, setData] = useState("");
   const [Number, setNumber] = useState(0);
   const [Query, setQuery] = useState("");
-  const [Forms, setForms] = useState({});
+  const [Forms, setForms] = useState({
+    id: "",
+    username: "",
+    trophy: "",
+  });
 
   async function render() {
     const API = "http://localhost:8080/";
