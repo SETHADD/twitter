@@ -6,6 +6,8 @@ const PORT = process.env.PORT || 8081;
 const app = express();
 app.use(cors());
 
+const claim = require("./claim");
+
 // import the game function
 const game = require("./game");
 //Enable the ability to update and post data
@@ -38,6 +40,8 @@ app.get("/game/:PlayerId", todo);
 
 //endpoint for the game
 app.get("/game", game);
+
+app.get("/claim", claim);
 
 // creating the posting endpoint
 app.post("/game", (request, response) => {

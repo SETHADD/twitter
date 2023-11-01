@@ -15,5 +15,15 @@ const SqlConfig = {
   },
 };
 const claim = function (request, response) {
-  mssql.connect(SqlConfig);
+  mssql.connect(SqlConfig, (err) => {
+    if (err) console.log(err);
+    const req = new mssql.Request();
+    req.query("select * from Todo_List", function (err, recordset) {
+      if (err) console.log(err);
+      request.status(200).send(recordset);
+    });
+    1;
+  });
 };
+
+module.exports = claim;
