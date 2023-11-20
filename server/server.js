@@ -6,7 +6,8 @@ const PORT = process.env.PORT || 8081;
 const app = express();
 app.use(cors());
 
-const claim = require("./claim");
+//
+const claim = require("./sql");
 
 // import the game function
 const game = require("./game");

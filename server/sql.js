@@ -1,29 +1,85 @@
 const mssql = require("mssql");
-require("env").config();
-const User = process.env.USERNAME;
-const password = process.env.PASSWORD;
-const databaseName = process.env.DB_NAME;
+// require("dotenv").config();
+// const User = process.env.USERNAME;
+// const password = process.env.PASSWORD;
+// const databaseName = process.env.DB_NAME;
 
-const SqlConfig = {
-  username: User,
-  password: password,
-  database: databaseName,
+// const SqlConfig = {
+//   user: "ANNYSETH/ANYSETH",
+//   port: 1443,
+//   // password: "40Reen@7239",
+//   database: "TodoList",
+//   server: "localhost",
+//   // requestTimeout: 15000,
+//   stream: true,
+//   // pool: {
+//   //   max: 10,
+//   //   min: 0,
+//   //   idleTimeoutMillis: 30000,
+//   // },
+//   options: {
+//     keepAlive: true,
+//     encrypt: true,
+//     enableArithAbort: true,
+//     trustServerCertificate: true,
+//     trustedConnection: true,
+//     connectiontimeout: 15000,
+//   },
+// };
+
+// mssql.connect(SqlConfig, (err) => {
+//   if (err) {
+//     console.log("Connection error:", err);
+//     // Handle the connection error here, such as sending an error response.
+//     // response.status(500).send("Internal Server Error");
+//   } else {
+//     console.log("Database connected");
+
+//     const req = new mssql.Request();
+//     req.query("SELECT * FROM Todo_List", function (err, recordset) {
+//       if (err) {
+//         console.log("Query error:", err);
+//         // Handle the query error here, such as sending an error response.
+//         // response.status(500).send("Internal Server Error");
+//       } else {
+//         console.log(recordset.recordset);
+//         // Send a success response with the query results.
+//         // response.status(200).send(recordset);
+//       }
+
+//       // Close the connection after handling the request
+//       mssql.close();
+//     });
+//   }
+// });
+
+const sqlConfig = {
+  user: "sa",
+  password: "40Reen@7239",
+  database: "TodoList",
   server: "localhost",
+  port: 1433,
   pool: {
+    max: 10,
     min: 0,
-    max: 1000,
+    idleTimeoutMillis: 30000,
+  },
+  options: {
+    encrypt: false, // for azure
+    trustServerCertificate: true, // change to true for local dev / self-signed certs
   },
 };
-const claim = function (request, response) {
-  mssql.connect(SqlConfig, (err) => {
-    if (err) console.log(err);
-    const req = new mssql.Request();
-    req.query("select * from Todo_List", function (err, recordset) {
-      if (err) console.log(err);
-      request.status(200).send(recordset);
-    });
-    1;
-  });
+
+let cal = async function () {
+  try {
+    await mssql.connect(sqlConfig);
+    const result = await sql.query(`select * from Todo_List`);
+    console.log(result);
+  } catch (err) {
+    console.log("there is an error", err);
+  }
 };
 
-module.exports = claim;
+module.exports = cal;
+
+cal();
